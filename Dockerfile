@@ -8,7 +8,7 @@ RUN apk add -u gcc musl-dev
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN chmod +x ./entrypoint.sh
+RUN chmod a+x ./entrypoint.sh
 
 CMD ./entrypoint.sh
 CMD ["sh", "-c", "tail -f /dev/null"]
