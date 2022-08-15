@@ -1,15 +1,10 @@
-FROM python:3.8-alpine
+FROM python:3.9-alpine
 
-WORKDIR /app
+COPY requirements.txt /
 
-COPY ./requirements.txt ./
-
-RUN apk add -u gcc musl-dev
 RUN pip install -r requirements.txt
 
-COPY ./ ./
+# copy files from local machine to docker image
+COPY . .
 
-RUN chmod +x ./entrypoint.sh
-
-ENTRYPOINT ['./entrypoint.sh']
-CMD ["sh", "-c", "tail -f /dev/null"]
+CMD python manage.py runserver
