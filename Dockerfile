@@ -11,5 +11,5 @@ COPY ./ ./
 
 RUN chmod +x ./entrypoint.sh
 
-ENTRYPOINT ./entrypoint.sh
+ENTRYPOINT ['./entrypoint.sh']
 CMD ["sh", "-c", "tail -f /dev/null"]
