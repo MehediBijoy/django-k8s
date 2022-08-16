@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python","manage.py","runserver", "0:8000"]
+CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "config.wsgi"]
