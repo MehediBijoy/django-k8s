@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+
+    spec:
+      containers:
+        - name: django-app-container
+          image: django-image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          env:
+            - name: HOST
+              value: postgres-service
